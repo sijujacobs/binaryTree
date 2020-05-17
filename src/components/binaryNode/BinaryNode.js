@@ -3,23 +3,19 @@ class BinaryNode {
     this.value = value;
     this.left = null;
     this.right = null;
-    this.level = 0;
   }
 
-  insertChildNode(node, level) {
-    if (this.left || this.right) {
-      ++this.level;
-    }
+  insertChildNode(node) {
     if (node.value < this.value) {
       if (this.left !== null) {
-        this.left.insertChildNode(node, this.level);
+        this.left.insertChildNode(node);
       } else {
         this.left = node;
       }
     }
     if (node.value > this.value) {
       if (this.right !== null) {
-        this.right.insertChildNode(node, this.level);
+        this.right.insertChildNode(node);
       } else {
         this.right = node;
       }

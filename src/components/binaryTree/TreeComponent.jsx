@@ -20,20 +20,35 @@ class TreeComponent extends Component {
   //   });
   // };
   onClickHandler = () => {
-    // console.log(" ::this.refs.myInput  : ", this.nodeInput.current.value);
     let nodeValue = this.nodeInput.current.value;
-    let node = new BinaryNode(nodeValue);
-    this.state.bTree.insertNode(node);
-    this.forceUpdate();
+    if (nodeValue > 0) {
+      let node = new BinaryNode(nodeValue);
+      this.state.bTree.insertNode(node);
+      this.forceUpdate();
+    }
+  };
+  onKeyDownHandler = (e) => {
+    if (e.keyCode === 13) {
+      this.onClickHandler();
+    }
   };
 
   render() {
     const rootNode = this.state.bTree.rootNode || null;
     return (
       <div className="treeComponent">
-        <input type="number" min="1" ref={this.nodeInput}></input>
-        <button onClick={this.onClickHandler}>Insert</button>
-        {rootNode && <NodeComponent type="root" node={rootNode} />}
+        <div className="controlArea">
+          <input
+            type="number"
+            min="1"
+            ref={this.nodeInput}
+            onKeyDown={this.onKeyDownHandler}
+          ></input>
+          <button onClick={this.onClickHandler}>Insert</button>
+        </div>
+        <div className="treeView">
+          {rootNode && <NodeComponent type="root" node={rootNode} />}
+        </div>
       </div>
     );
   }

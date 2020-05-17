@@ -8,10 +8,18 @@
 .treeComponent {
   border: 1px solid #222;
   border-radius: 3px;
+  background-color: #333;
   height: 100vh;
+  padding: 10px;
 }
 
-.treeComponent input {
+.treeComponent .controlArea {
+  margin: 0 auto;
+  width: 500px;
+  text-align: center;
+}
+
+.treeComponent .controlArea input {
   outline: none;
   padding: 3px;
   width: 80px;
@@ -22,7 +30,7 @@
           box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.6);
 }
 
-.treeComponent button {
+.treeComponent .controlArea button {
   outline: none;
   padding: 3px;
   margin: 5px;
@@ -38,10 +46,16 @@
           box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.6);
 }
 
-.treeComponent button:hover {
+.treeComponent .controlArea button:hover {
   -webkit-transform: scale(1);
           transform: scale(1);
   cursor: pointer;
-  background-color: #82ebfe;
+  background-color: #f24e4e;
+}
+
+.treeComponent .treeView {
+  width: 100%;
+  height: 100vh;
+  margin-top: 20px;
 }
 /*# sourceMappingURL=TreeComponent.css.map */

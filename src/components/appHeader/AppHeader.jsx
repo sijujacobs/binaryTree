@@ -5,7 +5,7 @@ import TreeComponent from "../binaryTree/TreeComponent";
 const AppHeader = (props) => {
   return (
     <>
-      <div className="appHeader">APP HEADER</div>
+      <div className="appHeader">BINARY TREE</div>
       <div className="binaryTree">
         <TreeComponent />
       </div>

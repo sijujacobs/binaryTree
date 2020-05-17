@@ -1,0 +1,21 @@
+$blackColor222: #222;
+$blackColor666: #666;
+$whiteColor: #fff;
+$boxShadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.6);
+$transition: all 0.3s ease;
+$blackBG: #666;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@mixin borderStyle1($size, $color) {
+  border: $size solid $color;
+  border-radius: 3px;
+}
+
+.appHeader {
+  padding: 20px;
+  background: $blackBG;
+}

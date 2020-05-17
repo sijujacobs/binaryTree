@@ -1,0 +1,12 @@
+$blackColor222: #222;
+$whiteColor: #fff;
+$boxShadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.6);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@mixin borderStyle1($size, $color) {
+  border: $size solid $color;
+}

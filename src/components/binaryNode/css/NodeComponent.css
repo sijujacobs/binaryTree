@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.nodeComponent {
+  outline: none;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid #222;
+  -webkit-box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.6);
+          box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.6);
+  background-color: #666;
+  border-radius: 50%;
+}
+
+.nodeComponent:hover {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  cursor: pointer;
+  background-color: #82ebfe;
+}
+
+.root {
+  margin: 0 auto;
+  position: relative;
+}
+
+.left {
+  position: absolute;
+  left: -50px;
+  top: 30px;
+  display: inline-block;
+}
+
+.right {
+  position: absolute;
+  right: -50px;
+  top: 30px;
+  display: inline-block;
+}
+/*# sourceMappingURL=NodeComponent.css.map */

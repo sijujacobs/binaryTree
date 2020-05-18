@@ -15,7 +15,6 @@
 
 .treeComponent .controlArea {
   margin: 0 auto;
-  width: 500px;
   text-align: center;
 }
 
@@ -59,34 +58,91 @@
   margin-top: 20px;
 }
 
-.treeComponent .summary {
-  position: absolute;
-  width: 300px;
-  border: 1px solid #333;
+.treeComponent .summaryTable {
+  width: 250px;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   color: whitesmoke;
   font-size: 10pt;
-  padding: 10px 20px 15px 20px;
+  padding: 10px 0px 15px 0px;
   text-align: center;
 }
 
-.treeComponent .summary li {
-  list-style: none;
-  text-align: left;
+.treeComponent .summaryTable p {
+  background-color: #222;
   padding: 3px;
+  text-align: center;
+}
+
+.treeComponent .summaryTable th {
+  width: 85px;
+}
+
+.treeComponent .summaryTable tr {
   border-bottom: 1px dotted whitesmoke;
 }
 
-.treeComponent .summary li span.level {
-  width: 60px;
-  margin-right: 3px;
-  display: inline-block;
+/* This fires as soon as the element enters the dorm */
+.list-transition-enter,
+.list-transition-appear {
+  /*We give the list the initial dimension of the list button*/
+  position: absolute;
+  top: 0;
+  width: 120px;
+  max-height: 40px;
+  background-color: #333;
 }
 
-.treeComponent .summary li span.content {
+.list-transition-enter-done {
+  position: absolute;
+  border: 1px solid #333;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  z-index: 9;
+}
+
+.list-transition-enter-done p {
+  background-color: #111;
+  color: whitesmoke;
+  padding: 3px;
+  text-align: center;
+}
+
+.list-transition-enter-done th {
   width: 85px;
-  margin-right: 3px;
-  display: inline-block;
+}
+
+.list-transition-enter-done tr {
+  border-bottom: 1px dotted whitesmoke;
+}
+
+/* This is where we can add the transition*/
+.list-transition-enter-active,
+.list-transition-appear-active {
+  position: absolute;
+  top: 45px;
+  width: 300px;
+  max-height: 200px;
+  background-color: #333;
+  -webkit-transition: all 400ms;
+  transition: all 400ms;
+}
+
+/* This fires as soon as the this.state.showList is false */
+.list-transition-exit {
+  position: absolute;
+  top: 45px;
+  width: 200px;
+  max-height: 200px;
+}
+
+/* fires as element leaves the DOM*/
+.list-transition-exit-active {
+  top: 0;
+  width: 120px;
+  max-height: 40px;
+  background-color: #333;
+  -webkit-transition: all 400ms;
+  transition: all 400ms;
 }
 /*# sourceMappingURL=TreeComponent.css.map */

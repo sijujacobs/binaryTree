@@ -4,7 +4,9 @@ import "./css/TreeComponent.css";
 import BinaryTree from "./BinaryTree";
 import BinaryNode from "../binaryNode/BinaryNode";
 import NodeComponent from "../binaryNode/NodeComponent";
+import TreeSummary from "./TreeSummary";
 
+import { CSSTransition } from "react-transition-group";
 class TreeComponent extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +14,7 @@ class TreeComponent extends Component {
     this.state = {
       nodeValue: 0,
       bTree: new BinaryTree(),
+      showSummary: false,
     };
     this.state.treeSummary = [];
   }
@@ -34,8 +37,14 @@ class TreeComponent extends Component {
       this.onClickHandler();
     }
   };
-  onTraverseHandler = () => {
-    // this.state.bTree.traverse();
+
+  showSummary = () => {
+    this.setState((prevState) => ({
+      showList: !prevState.showList,
+    }));
+    this.getSummary();
+  };
+  getSummary = () => {
     var tPromise = new Promise((resove, reject) => {
       this.state.bTree.traverse();
       if (this.state.bTree.treeMap) {
@@ -61,34 +70,6 @@ class TreeComponent extends Component {
 
   render() {
     const rootNode = this.state.bTree.rootNode || null;
-
-    let summaryList =
-      this.state.treeSummary &&
-      this.state.treeSummary.length > 0 &&
-      this.state.treeSummary.map((item, i) => {
-        return (
-          <li key={i}>
-            <span className="level">Level : {item.level}</span>
-            <span className="content">
-              Total : {Number(item.total).toFixed(0)}
-            </span>
-            <span className="content">
-              Average : {Number(item.average).toFixed(2)}
-            </span>
-          </li>
-        );
-      });
-    let summaryContainer =
-      this.state.treeSummary && this.state.treeSummary.length > 0 ? (
-        <div className="summary">
-          <div>
-            <p>Summary</p>
-            <ul>{summaryList}</ul>
-          </div>
-        </div>
-      ) : (
-        <div></div>
-      );
     return (
       <div className="treeComponent">
         <div className="controlArea">
@@ -99,9 +80,19 @@ class TreeComponent extends Component {
             onKeyDown={this.onKeyDownHandler}
           ></input>
           <button onClick={this.onClickHandler}>Insert</button>
-          <button onClick={this.onTraverseHandler}>Summary</button>
+          <button onClick={this.showSummary}>Summary</button>
         </div>
-        {summaryContainer}
+        <CSSTransition
+          in={this.state.showList}
+          timeout={400}
+          classNames="list-transition"
+          unmountOnExit
+          appear
+          onEntered={this.listSwitch}
+          onExit={this.listSwitch}
+        >
+          <TreeSummary summary={this.state.treeSummary} />
+        </CSSTransition>
         <div className="treeView">
           {rootNode && <NodeComponent type="root" node={rootNode} />}
         </div>

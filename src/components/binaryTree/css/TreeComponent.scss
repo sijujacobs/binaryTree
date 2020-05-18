@@ -21,7 +21,6 @@ $blackBG: #666;
   padding: 10px;
   .controlArea {
     margin: 0 auto;
-    width: 500px;
     text-align: center;
 
     input {
@@ -55,31 +54,93 @@ $blackBG: #666;
     height: 100vh;
     margin-top: 20px;
   }
-  .summary {
-    position: absolute;
-    width: 300px;
-    border: 1px solid #333;
+  .summaryTable {
+    width: 250px;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     color: whitesmoke;
     font-size: 10pt;
-    padding: 10px 20px 15px 20px;
+    padding: 10px 0px 15px 0px;
     text-align: center;
-    li {
-      list-style: none;
-      text-align: left;
+    p {
+      background-color: #222;
       padding: 3px;
+      text-align: center;
+    }
+    th {
+      width: 85px;
+    }
+    tr {
       border-bottom: 1px dotted whitesmoke;
-      span.level {
-        width: 60px;
-        margin-right: 3px;
-        display: inline-block;
-      }
-      span.content {
-        width: 85px;
-        margin-right: 3px;
-        display: inline-block;
-      }
     }
   }
+}
+
+// .transition-enter {
+//   height: 0px;
+// }
+
+// .transition-enter.transition-enter-active {
+//   height: 100px;
+//   -webkit-transition: height 0.3s ease;
+// }
+
+// .transition-leave.transition-leave-active {
+//   height: 0px;
+//   -webkit-transition: height 0.3s ease;
+// }
+/* This fires as soon as the element enters the dorm */
+.list-transition-enter,
+.list-transition-appear {
+  /*We give the list the initial dimension of the list button*/
+  position: absolute;
+  top: 0;
+  width: 120px;
+  max-height: 40px;
+  background-color: #333;
+}
+.list-transition-enter-done {
+  position: absolute;
+  border: 1px solid #333;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  z-index: 9;
+  p {
+    background-color: #111;
+    color: whitesmoke;
+    padding: 3px;
+    text-align: center;
+  }
+  th {
+    width: 85px;
+  }
+  tr {
+    border-bottom: 1px dotted whitesmoke;
+  }
+}
+/* This is where we can add the transition*/
+.list-transition-enter-active,
+.list-transition-appear-active {
+  position: absolute;
+  top: 45px;
+  width: 300px;
+  max-height: 200px;
+  background-color: #333;
+  transition: all 400ms;
+}
+
+/* This fires as soon as the this.state.showList is false */
+.list-transition-exit {
+  position: absolute;
+  top: 45px;
+  width: 200px;
+  max-height: 200px;
+}
+/* fires as element leaves the DOM*/
+.list-transition-exit-active {
+  top: 0;
+  width: 120px;
+  max-height: 40px;
+  background-color: #333;
+  transition: all 400ms;
 }

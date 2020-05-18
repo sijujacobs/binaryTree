@@ -58,4 +58,35 @@
   height: 100vh;
   margin-top: 20px;
 }
+
+.treeComponent .summary {
+  position: absolute;
+  width: 300px;
+  border: 1px solid #333;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  color: whitesmoke;
+  font-size: 10pt;
+  padding: 10px 20px 15px 20px;
+  text-align: center;
+}
+
+.treeComponent .summary li {
+  list-style: none;
+  text-align: left;
+  padding: 3px;
+  border-bottom: 1px dotted whitesmoke;
+}
+
+.treeComponent .summary li span.level {
+  width: 60px;
+  margin-right: 3px;
+  display: inline-block;
+}
+
+.treeComponent .summary li span.content {
+  width: 85px;
+  margin-right: 3px;
+  display: inline-block;
+}
 /*# sourceMappingURL=TreeComponent.css.map */

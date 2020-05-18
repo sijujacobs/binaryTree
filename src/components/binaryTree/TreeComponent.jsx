@@ -53,31 +53,14 @@ class TreeComponent extends Component {
       .then((newTreeSummary) => {
         console.log("Promise Success: newTreeSummary : ", newTreeSummary);
         this.setState((prevState) => ({
-          treeSummary: [...prevState.treeSummary, ...newTreeSummary],
+          treeSummary: newTreeSummary,
         }));
       })
       .catch((e) => console.log("Promise Error : ", e));
-
-    // console.log(" ::tree Map : ", tMap);
   };
 
   render() {
     const rootNode = this.state.bTree.rootNode || null;
-
-    // console.log(
-    //   " render ::this.state.treeSummary   : ",
-    //   this.state.treeSummary
-    // );
-    // let fruits = [
-    //   { name: "Apple", color: "red" },
-    //   { name: "Orange", color: "orange" },
-    //   { name: "Grape", color: "green" },
-    // ];
-    // let summaryList1 =
-    //   fruits &&
-    //   fruits.map((item, i) => {
-    //     return <li key={i}>{item.name}</li>;
-    //   });
 
     let summaryList =
       this.state.treeSummary &&
@@ -85,12 +68,27 @@ class TreeComponent extends Component {
       this.state.treeSummary.map((item, i) => {
         return (
           <li key={i}>
-            <span>Level : {item.level}</span>
-            <span>Total : {item.total}</span>
-            <span>Average : {item.average}</span>
+            <span className="level">Level : {item.level}</span>
+            <span className="content">
+              Total : {Number(item.total).toFixed(0)}
+            </span>
+            <span className="content">
+              Average : {Number(item.average).toFixed(2)}
+            </span>
           </li>
         );
       });
+    let summaryContainer =
+      this.state.treeSummary && this.state.treeSummary.length > 0 ? (
+        <div className="summary">
+          <div>
+            <p>Summary</p>
+            <ul>{summaryList}</ul>
+          </div>
+        </div>
+      ) : (
+        <div></div>
+      );
     return (
       <div className="treeComponent">
         <div className="controlArea">
@@ -102,13 +100,8 @@ class TreeComponent extends Component {
           ></input>
           <button onClick={this.onClickHandler}>Insert</button>
           <button onClick={this.onTraverseHandler}>Summary</button>
-          <div className="summary">
-            <div>
-              <p>Summary</p>
-              <ul>{summaryList}</ul>
-            </div>
-          </div>
         </div>
+        {summaryContainer}
         <div className="treeView">
           {rootNode && <NodeComponent type="root" node={rootNode} />}
         </div>
